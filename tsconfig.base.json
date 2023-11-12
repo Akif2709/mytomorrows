@@ -14,7 +14,15 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@mytomorrows/core": ["libs/core/src/index.ts"],
+      "@mytomorrows/favorite-users": ["libs/favorite-users/src/index.ts"],
+      "@mytomorrows/shared-models": ["libs/shared/models/src/index.ts"],
+      "@mytomorrows/shared-services": ["libs/shared/services/src/index.ts"],
+      "@mytomorrows/shared-ui": ["libs/shared/ui/src/index.ts"],
+      "@mytomorrows/shared-utils": ["libs/shared/utils/src/index.ts"],
+      "@mytomorrows/users": ["libs/users/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

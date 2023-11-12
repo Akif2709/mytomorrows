@@ -1,6 +1,17 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "../../libs/shared/models/src/lib/users.model.ts",
+    "../../libs/shared/models/src/lib/observable-status.model.ts",
+    "../../libs/shared/utils/src/lib/state-helpers.ts",
+    "../../libs/shared/utils/src/lib/animations.ts",
+    "../../libs/users/src/lib/models/add-user-form.model.ts",
+    "../../libs/shared/services/src/lib/users-http/users-http.service.spec.ts",
+    "../../libs/shared/services/src/lib/users-http/users-http.service.ts",
+    "../../libs/shared/services/src/lib/favorite-users/favorite-users.service.spec.ts",
+    "../../libs/shared/services/src/lib/favorite-users/favorite-users.service.ts"
+  ],
   "compilerOptions": {
     "types": ["jest", "node"]
   }

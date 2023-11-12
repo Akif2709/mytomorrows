@@ -1,9 +1,21 @@
 import { Route } from '@angular/router';
-import { HomeComponent } from './views/home/home.component';
-import { FavoriteUsersViewComponent } from './views/favorite-users-view/favorite-users-view.component';
+import { NotFoundComponent } from '@mytomorrows/core';
 
 export const appRoutes: Route[] = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent,  data: { animation: 'LeftPage' }, },
-  { path:'favorite-users', component:FavoriteUsersViewComponent,  data: { animation: 'RightPage' },}
+  {
+    path: 'home',
+    loadComponent: () =>
+      import('@mytomorrows/users').then((x) => x.HomeComponent),
+    data: { animation: 'LeftPage' },
+  },
+  {
+    path: 'favorite-users',
+    loadComponent: () =>
+      import('@mytomorrows/favorite-users').then(
+        (x) => x.FavoriteUsersViewComponent
+      ),
+    data: { animation: 'RightPage' },
+  },
+  { path: '**', component: NotFoundComponent },
 ];
