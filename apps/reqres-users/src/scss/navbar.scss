@@ -1,0 +1,16 @@
+.navbar a {
+  margin-left: 0.5rem;
+
+  &:after {
+    content: '';
+    background: $primary;
+    display: block;
+    width: 0;
+    height: 2px;
+    transition: width 0.2s;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}

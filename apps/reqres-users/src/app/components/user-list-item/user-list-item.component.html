@@ -1,0 +1,23 @@
+<div class="d-flex flex-no-wrap my-2 align-items-start">
+  <img
+    [src]="user?.avatar"
+    [alt]="user?.last_name"
+    class="rounded me-3"
+    width="80"
+  />
+  <div class="">
+    <p class="mb-0">{{ user?.first_name }} {{ user?.last_name }}</p>
+    <p class="text-small text-muted">{{ user?.email }}</p>
+  </div>
+  <div class="d-flex flex-column align-items-end ms-auto">
+    <button
+      class="btn btn-outline-primary pb-1"
+      (click)="handleToggleFavorite()"
+      >{{isFavorite ? 'Remove favorite': 'Add favorite'}}
+    </button>
+    <button
+      class="btn btn-outline-danger mt-2 px-4"
+      (click)="handleDeleteUser()"
+    >Delete</button>
+  </div>
+</div>
