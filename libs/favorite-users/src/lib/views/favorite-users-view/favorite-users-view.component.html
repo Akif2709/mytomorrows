@@ -7,7 +7,8 @@
         <mytomorrows-user-list-item
           [user]="user"
           [isFavorite]="true"
-          (toggleFavorite)="toggleFavorite(user)"
+          (toggleFavorite)="removeFavoriteUser(user)"
+          [showDeleteButton]="false"
         ></mytomorrows-user-list-item>
       </li>
       } @empty {

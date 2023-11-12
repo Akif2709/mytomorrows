@@ -1,4 +1,4 @@
-.navbar a {
+.navbar .nav-item a {
   margin-left: 0.5rem;
 
   &:after {
@@ -7,7 +7,13 @@
     display: block;
     width: 0;
     height: 2px;
+    margin-top: 0.5rem;
     transition: width 0.2s;
+  }
+
+  &.active::after {
+    width: 100%;
+    opacity: 0.5;
   }
 
   &:hover::after {

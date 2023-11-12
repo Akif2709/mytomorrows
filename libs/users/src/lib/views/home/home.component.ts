@@ -20,11 +20,15 @@ import {
 } from '@angular/forms';
 import { DataState, DataStatus, User } from '@mytomorrows/shared-models';
 import { setError, setLoading, setSuccess } from '@mytomorrows/shared-utils';
-import { UserListItemComponent } from '@mytomorrows/shared-ui';
+import {
+  LoadingComponent,
+  UserListItemComponent,
+} from '@mytomorrows/shared-ui';
 import { CreateUserFormComponent } from '../../components/create-user-form/create-user-form.component';
 import { AddUserForm } from '../../models/add-user-form.model';
 import {
   FavoriteUsersService,
+  NotificationService,
   UsersService,
 } from '@mytomorrows/shared-services';
 import { mapPostUser } from '../../utils/user-mapper.utils';
@@ -37,6 +41,7 @@ import { mapPostUser } from '../../utils/user-mapper.utils';
     ReactiveFormsModule,
     UserListItemComponent,
     CreateUserFormComponent,
+    LoadingComponent,
   ],
   templateUrl: './home.component.html',
 })
@@ -45,7 +50,7 @@ export class HomeComponent implements OnInit {
     {} as DataState<User[]>
   );
   private intervalSubscription?: Subscription;
-  readonly favoriteUsers$ = this.favoriteUsersService.getFavoriteUsers$();
+  readonly favoriteUsers$ = this.favoriteUsersService.getFavoriteUsers();
   readonly dataStatus = DataStatus;
   formGroup: FormGroup<AddUserForm> = this.createForm();
 
@@ -55,7 +60,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private readonly usersService: UsersService,
-    private readonly favoriteUsersService: FavoriteUsersService
+    private readonly favoriteUsersService: FavoriteUsersService,
+    private readonly notificationService: NotificationService
   ) {}
 
   readonly usersWithFavoriteData$ = combineLatest([
@@ -64,13 +70,11 @@ export class HomeComponent implements OnInit {
   ]).pipe(
     map(([favoriteUsers, usersState]) => {
       if (usersState.status === DataStatus.SUCCESS && usersState.value) {
-        return {
-          ...usersState,
-          value: usersState.value.map((user) => ({
-            ...user,
-            isFavorite: favoriteUsers.some((f) => f.id === user.id),
-          })),
-        };
+        const users = usersState.value.map((user) => ({
+          ...user,
+          isFavorite: favoriteUsers.some((f) => f.id === user.id),
+        }));
+        return setSuccess(users) as DataState<User[]>;
       } else {
         return usersState;
       }
@@ -115,11 +119,16 @@ export class HomeComponent implements OnInit {
             value: value?.filter((u) => u.id !== user.id),
           };
           this.usersState$.next(nextState);
-          // show success notification
+          this.notificationService.showNotification(
+            'success',
+            `You successfully deleted the user: ${user.first_name} ${user.last_name}`
+          );
         },
         error: () => {
-          // Handle error
-          // show error notification
+          this.notificationService.showNotification(
+            'error',
+            `Something went wrong!`
+          );
         },
       });
   }
@@ -138,11 +147,16 @@ export class HomeComponent implements OnInit {
           ]);
           this.usersState$.next(nextState as DataState<User[]>);
           this.formGroup.reset();
-          // show success notification
+          this.notificationService.showNotification(
+            'success',
+            `You successfully deleted the user: ${mappedUser.first_name} ${mappedUser.last_name}`
+          );
         },
         error: () => {
-          // Handle error
-          // show error notification
+          this.notificationService.showNotification(
+            'error',
+            `Something went wrong!`
+          );
         },
       });
   }

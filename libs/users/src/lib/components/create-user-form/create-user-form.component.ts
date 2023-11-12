@@ -8,7 +8,6 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './create-user-form.component.html',
-  styleUrls: ['./create-user-form.component.scss'],
 })
 export class CreateUserFormComponent {
   submitted = false;

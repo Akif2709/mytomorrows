@@ -15,14 +15,18 @@
       class="btn btn-outline-primary pb-1"
       (click)="handleToggleFavorite()"
       [disabled]="favoriteButtonDisabled"
+      data-role="favorite-toggle-button"
     >
       {{ isFavorite ? 'Remove favorite' : 'Add favorite' }}
     </button>
+    @if(showDeleteButton){
     <button
       class="btn btn-outline-danger mt-2 px-4"
       (click)="handleDeleteUser()"
+      data-role="delete-user-button"
     >
       Delete
     </button>
+    }
   </div>
 </div>

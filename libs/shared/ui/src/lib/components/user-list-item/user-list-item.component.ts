@@ -12,14 +12,15 @@ export class UserListItemComponent {
   @Input({ required: true }) isFavorite: boolean = false;
   @Input({ required: true }) user?: User;
   @Input() favoriteButtonDisabled = false;
+  @Input() showDeleteButton = true;
 
   @Output() toggleFavorite = new EventEmitter<void>();
   @Output() deleteUser = new EventEmitter<void>();
 
   handleToggleFavorite() {
-    this.toggleFavorite.next();
+    this.toggleFavorite.emit();
   }
   handleDeleteUser() {
-    this.deleteUser.next();
+    this.deleteUser.emit();
   }
 }

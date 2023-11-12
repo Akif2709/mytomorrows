@@ -3,7 +3,7 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/ui/src",
   "prefix": "mytomorrows",
-  "tags": [],
+  "tags": ["type:ui", "scope:shared"],
   "projectType": "library",
   "targets": {
     "build": {

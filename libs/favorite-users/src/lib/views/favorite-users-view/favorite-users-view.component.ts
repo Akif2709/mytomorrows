@@ -9,13 +9,13 @@ import { User } from '@mytomorrows/shared-models';
   standalone: true,
   imports: [CommonModule, UserListItemComponent],
   templateUrl: './favorite-users-view.component.html',
-  styleUrls: ['./favorite-users-view.component.scss'],
 })
 export class FavoriteUsersViewComponent {
-  readonly favoriteUsers$ = this.favoriteUsersService.getFavoriteUsers$();
+  readonly favoriteUsers$ = this.favoriteUsersService.getFavoriteUsers();
+
   constructor(private readonly favoriteUsersService: FavoriteUsersService) {}
 
-  toggleFavorite(user: User) {
+  removeFavoriteUser(user: User) {
     this.favoriteUsersService.removeFavoriteUser(user);
   }
 }

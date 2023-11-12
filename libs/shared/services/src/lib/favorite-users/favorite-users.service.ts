@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class FavoriteUsersService {
   private readonly _favoriteUsers$ = new BehaviorSubject<User[]>([]);
 
-  getFavoriteUsers$(): Observable<User[]> {
+  getFavoriteUsers(): Observable<User[]> {
     return this._favoriteUsers$.asObservable();
   }
 
