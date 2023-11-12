@@ -1,5 +1,5 @@
 {
-  "name": "@mytomorrows-assignment/shared-utils",
+  "name": "@mytomorrows/shared-utils",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^17.0.0",
