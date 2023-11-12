@@ -9,16 +9,17 @@ import { User } from '../../models/users.model';
   templateUrl: './user-list-item.component.html',
 })
 export class UserListItemComponent {
-  @Input({ required: true }) isFavorite:boolean = false;
+  @Input({ required: true }) isFavorite: boolean = false;
   @Input({ required: true }) user?: User;
-  @Output() toggleFavorite = new EventEmitter<void>()
-  @Output() deleteUser = new EventEmitter<void>()
+  @Input() favoriteButtonDisabled = false;
 
+  @Output() toggleFavorite = new EventEmitter<void>();
+  @Output() deleteUser = new EventEmitter<void>();
 
-  handleToggleFavorite(){
-    this.toggleFavorite.next()
+  handleToggleFavorite() {
+    this.toggleFavorite.next();
   }
-  handleDeleteUser(){
-    this.deleteUser.next()
+  handleDeleteUser() {
+    this.deleteUser.next();
   }
 }

@@ -1,4 +1,4 @@
-export interface User {
+export interface RawUser {
   id: number;
   email: string;
   first_name: string;
@@ -18,6 +18,6 @@ export interface SingleUserResponse {
   data: User;
 }
 
-export interface EnrichedUser extends User {
-  isFavorite:boolean
+export interface User extends RawUser {
+  isFavorite: boolean;
 }

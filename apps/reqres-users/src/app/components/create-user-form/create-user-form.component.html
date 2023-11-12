@@ -1,0 +1,99 @@
+<!-- @if(formGroup) { -->
+<button
+  class="btn btn-primary ms-auto d-flex align-items-center mb-3"
+  type="button"
+  data-bs-toggle="collapse"
+  data-bs-target="#add-user-form"
+  aria-expanded="false"
+  aria-controls="add-user-form"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="2em"
+    viewBox="0 0 448 512"
+    fill="white"
+  >
+    <path
+      d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+    />
+  </svg>
+  <span class="ms-2 px-2"> Add new user </span>
+</button>
+
+<div class="collapse mb-5" id="add-user-form" #collapsibleContent>
+  @if(formGroup){
+  <form [formGroup]="formGroup" (ngSubmit)="handleOnSubmit()">
+    <div class="card card-body">
+      <div class="mb-3 row">
+        <div class="col">
+          <label for="first-name-input" class="form-label">Firstname*</label>
+          <input
+            type="text"
+            class="form-control"
+            id="first-name-input"
+            placeholder="Add your first name.."
+            formControlName="firstName"
+          />
+          @if(getControl('firstName')?.invalid &&
+          (getControl('firstName')?.touched || submitted)){
+          <div class="text-danger">
+            <div>First name is required.</div>
+          </div>
+          }
+        </div>
+        <div class="col">
+          <label for="last-name-input" class="form-label">Lastname*</label>
+          <input
+            type="text"
+            class="form-control"
+            id="last-name-input"
+            placeholder="Add your last name.."
+            formControlName="lastName"
+          />
+          @if(getControl('lastName')?.invalid &&
+          (getControl('lastName')?.touched || submitted)){
+          <div class="text-danger">
+            <div>Last name is required.</div>
+          </div>
+          }
+        </div>
+      </div>
+      <div class="mb-3 col-6">
+        <label for="email-input" class="form-label">Email*</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email-input"
+          placeholder="Add your email.."
+          formControlName="email"
+          email
+        />
+        @if(getControl('email')?.invalid && (getControl('email')?.touched ||
+        submitted)){
+        <div class="text-danger">
+          @if(getControl('email')?.errors?.['required']){
+          <div>Email is required.</div>
+          } @if(getControl('email')?.errors?.['email']){
+          <div>Email is not valid</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="image-url-input" class="form-label">Image url</label>
+        <input
+          type="url"
+          class="form-control"
+          id="image-url-input"
+          placeholder="https://example.com"
+          formControlName="imgUrl"
+        />
+      </div>
+      <button type="submit" class="m-2 btn btn-outline-primary ms-auto">
+        Submit
+      </button>
+    </div>
+  </form>
+  }
+</div>
+<!-- } -->

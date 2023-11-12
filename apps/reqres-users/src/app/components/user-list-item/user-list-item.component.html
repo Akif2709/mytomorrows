@@ -4,6 +4,7 @@
     [alt]="user?.last_name"
     class="rounded me-3"
     width="80"
+    height="80"
   />
   <div class="">
     <p class="mb-0">{{ user?.first_name }} {{ user?.last_name }}</p>
@@ -13,11 +14,15 @@
     <button
       class="btn btn-outline-primary pb-1"
       (click)="handleToggleFavorite()"
-      >{{isFavorite ? 'Remove favorite': 'Add favorite'}}
+      [disabled]="favoriteButtonDisabled"
+    >
+      {{ isFavorite ? 'Remove favorite' : 'Add favorite' }}
     </button>
     <button
       class="btn btn-outline-danger mt-2 px-4"
       (click)="handleDeleteUser()"
-    >Delete</button>
+    >
+      Delete
+    </button>
   </div>
 </div>
