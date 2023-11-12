@@ -81,7 +81,7 @@ describe('UsersService', () => {
       `${API_BASE}/users/${mockUser.id}`
     );
     expect(req.request.method).toBe('DELETE');
-    req.flush({}); // Response for the delete request
+    req.flush({});
   });
 
   it('should create user', () => {

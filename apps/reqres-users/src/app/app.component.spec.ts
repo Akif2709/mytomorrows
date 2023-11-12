@@ -8,18 +8,6 @@ describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
 
-  // const mockContexts = {
-  //   getContext: jest.fn(() => ({
-  //     route: {
-  //       snapshot: {
-  //         data: {
-  //           animation: 'slide-in',
-  //         },
-  //       },
-  //     },
-  //   })),
-  // };
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent, RouterTestingModule],
@@ -34,11 +22,4 @@ describe('AppComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  // it('should get route animation data', () => {
-  //   const animationData = component.getRouteAnimationData();
-
-  //   expect(animationData).toEqual('slide-in');
-  //   expect(mockContexts.getContext).toHaveBeenCalledWith('primary');
-  // });
 });

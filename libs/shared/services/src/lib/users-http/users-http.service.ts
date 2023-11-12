@@ -37,7 +37,6 @@ export class UsersService {
    * Get single response with random id
    */
   getRandomUser(): Observable<User> {
-    console.log('numberOfUsers', this.numberOfUsers);
     const randomUserId = Math.floor(Math.random() * this.numberOfUsers) + 1;
     return this.httpClient
       .get<SingleUserResponse>(`${API_BASE}/users/${randomUserId}`)
