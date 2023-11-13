@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import Toast from 'bootstrap/js/dist/Toast';
 
 @Injectable({
