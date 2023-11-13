@@ -1,8 +1,9 @@
-<div class="container my-4">
+<div class="container my-4 mt-5 pt-5">
   <h1 class="h2">Your favorite users</h1>
   <div class="w-100">
     <ul class="list-group list-group-flush">
-      @for (user of (favoriteUsers$ | async); track user.id){
+      @if(favoriteUsers$ | async; as users){ @for (user of users; track
+      user.id){
       <li class="list-group-item">
         <mytomorrows-user-list-item
           [user]="user"
@@ -11,11 +12,11 @@
           [showDeleteButton]="false"
         ></mytomorrows-user-list-item>
       </li>
-      } @empty {
+      } @empty{
       <li class="list-group-item ps-0 mt-5">
         You dont have favorite users yet!
       </li>
-      }
+      } }
     </ul>
   </div>
 </div>

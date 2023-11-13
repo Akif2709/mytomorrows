@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Toast } from 'bootstrap';
+import Toast from 'bootstrap/js/dist/Toast';
 
 @Injectable({
   providedIn: 'root',

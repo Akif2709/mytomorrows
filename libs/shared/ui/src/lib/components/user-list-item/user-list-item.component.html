@@ -1,14 +1,18 @@
-<div class="d-flex flex-no-wrap my-2 align-items-start">
-  <img
-    [src]="user?.avatar"
-    [alt]="user?.last_name"
-    class="rounded me-3"
-    width="80"
-    height="80"
-  />
-  <div class="">
-    <p class="mb-0">{{ user?.first_name }} {{ user?.last_name }}</p>
-    <p class="text-small text-muted">{{ user?.email }}</p>
+<div class="d-flex flex-no-wrap my-2 align-items-between">
+  <div class="d-flex flex-no-wrap align-items-start overflow-hidden">
+    <img
+      [src]="user?.avatar"
+      [alt]="user?.last_name"
+      class="rounded me-3"
+      width="80"
+      height="80"
+    />
+    <div class="text-truncate">
+      <p class="mb-0 text-truncate">
+        {{ user?.first_name }} {{ user?.last_name }}
+      </p>
+      <p class="text-small text-muted text-truncate">{{ user?.email }}</p>
+    </div>
   </div>
   <div class="d-flex flex-column align-items-end ms-auto">
     <button
