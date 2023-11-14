@@ -6,3 +6,14 @@
     <router-outlet></router-outlet>
   </div>
 </div>
+
+@if(notifications$ | async; as notifications){
+<div class="top-0 end-0 position-absolute" mytomorrowsAssignmentToast>
+  @for (item of notifications; track item.message) {
+  <mytomorrows-toast
+    [message]="item.message"
+    [status]="item.status"
+  ></mytomorrows-toast>
+  }
+</div>
+}
