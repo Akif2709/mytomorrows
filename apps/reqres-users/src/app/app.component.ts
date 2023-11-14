@@ -5,7 +5,7 @@ import { NavbarComponent } from '@mytomorrows/core';
 import { NotificationService } from '@mytomorrows/shared-services';
 import { ToastComponent } from '@mytomorrows/shared-ui';
 import { slideInAnimation } from '@mytomorrows/shared-utils';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 @Component({
   standalone: true,
