@@ -7,7 +7,6 @@ import Toast from 'bootstrap/js/dist/toast';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './toast.component.html',
-  styleUrls: ['./toast.component.scss'],
 })
 export class ToastComponent implements OnInit {
   @ViewChild('toastElement', { static: true }) toastEl!: ElementRef;
@@ -16,7 +15,6 @@ export class ToastComponent implements OnInit {
 
   ngOnInit(): void {
     const toast = new Toast(this.toastEl.nativeElement, { delay: 3000 });
-
     toast.show();
   }
 }
