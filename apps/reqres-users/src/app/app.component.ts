@@ -6,7 +6,6 @@ import { NotificationService } from '@mytomorrows/shared-services';
 import { ToastComponent } from '@mytomorrows/shared-ui';
 import { slideInAnimation } from '@mytomorrows/shared-utils';
 
-
 @Component({
   standalone: true,
   imports: [CommonModule, RouterModule, NavbarComponent, ToastComponent],
